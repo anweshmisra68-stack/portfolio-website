@@ -1,0 +1,28 @@
+[Unit]
+Description=Anwesh Misra Portfolio Contact API
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=anweshapi
+Group=anweshapi
+WorkingDirectory=/opt/anwesh-portfolio-api
+EnvironmentFile=/etc/anwesh-portfolio-api.env
+ExecStart=/usr/bin/node /opt/anwesh-portfolio-api/server.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGTERM
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
